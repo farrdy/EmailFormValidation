@@ -7,6 +7,7 @@ eventListeners();
 
 function eventListeners() {
   document.addEventListener("DOMContentLoaded", appInit);
+
   email.addEventListener("blur", validateField);
   subject.addEventListener("blur", validateField);
   message.addEventListener("blur", validateField);
@@ -19,4 +20,13 @@ function appInit() {
 function validateField() {
   let errors;
   validateLength(this);
+}
+
+function validateLength(field) {
+  if (field.value.length > 0) {
+    field.style.borderBottomColor = "green";
+    field.classList.remove("error");
+  } else {
+    field.classList.add("error");
+  }
 }
